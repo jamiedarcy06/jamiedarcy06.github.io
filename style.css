@@ -1,0 +1,95 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #fcfbf9; /* Warmer, paper-like background */
+    color: #2d2d2d; /* Softer charcoal text */
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+header {
+    margin-bottom: 3.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #e5e5e5; /* Softer border */
+}
+
+h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.05em;
+    color: #1a1a1a;
+}
+
+.meta {
+    font-size: 0.85rem;
+    color: #888;
+    font-style: italic;
+    letter-spacing: 0.05em;
+}
+
+p {
+    margin-bottom: 1.75rem;
+    font-size: 1.05rem;
+}
+
+/* Retro "Selection" style text highlight */
+::selection {
+    background: #e0e0e0;
+    color: #000;
+}
+
+a {
+    color: #2d2d2d;
+    text-decoration: underline;
+    text-decoration-color: #ccc;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    background-color: #f0f0f0;
+    text-decoration-color: #888;
+}
+
+footer {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px dashed #ddd; /* Softer dash */
+    font-size: 0.8rem;
+    color: #999;
+    text-align: center;
+}
+
+/* Utilities */
+.back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.post-list {
+    list-style: none;
+    padding: 0;
+}
+
+.post-item {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.post-date {
+    font-size: 0.85rem;
+    color: #999;
+    min-width: 120px;
+}
