@@ -127,15 +127,7 @@ sup a:hover {
 
 /* MathJax Overrides */
 mjx-container,
-.mjx-chtml,
-.mjx-math {
+mjx-container * {
     font-family: 'Courier New', Courier, monospace !important;
-    font-size: 1.1em !important;
-}
-
-.mjx-n,
-.mjx-mi,
-.mjx-mo,
-.mjx-mn {
-    font-family: 'Courier New', Courier, monospace !important;
+    font-style: normal !important;
 }
