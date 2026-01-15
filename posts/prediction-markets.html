@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trading Cash-or-Nothing Options - Jamie's Blog</title>
     <link rel="stylesheet" href="../style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -186,7 +188,15 @@
                 with the goal of receiving an <a
                     href="https://x.com/trylimitless/status/2010773556192239652">airdrop</a>. One can generate a lot of
                 volume with just $100. Trading in the few seconds after this market is resolved means that it is
-                impossible to lose, and so we only pay fees. Assuming that we pay 10 bps of fees, and 20bps
+                impossible to lose, and so we only pay fees. Assuming that we pay 10 bps of fees, and a 20bps 'premium'
+                (that is, we pay 100.2 cents for a contract worth 100, as well as 0.1 cents in fees), we can generate:
+            </p>
+
+            <p style="text-align: center; margin: 2rem 0;">
+                \( \text{Volume} = 100 + 100(0.997) + 100(0.997)^2 + \dots = \frac{100}{1 - 0.997} \approx \$33,333 \)
+            </p>, we can generate:
+
+            100*99.7% + 100*(99.7%)^2 + ... =
             </p>
 
             <p>
