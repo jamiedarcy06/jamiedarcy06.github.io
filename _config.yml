@@ -1,0 +1,19 @@
+title: Jamie D'Arcy
+author: Jamie D'Arcy
+description: Personal blog about prediction markets, trading, and more.
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  footnote_backlink: "&#8617;"
+
+# Permalinks
+permalink: /posts/:title/
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
