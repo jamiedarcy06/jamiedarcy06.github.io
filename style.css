@@ -100,19 +100,24 @@ footer {
 
 /* Footnotes */
 sup {
-    vertical-align: super;
-    font-size: smaller;
+    vertical-align: baseline;
+    font-size: inherit;
+    position: relative;
+    top: -1px;
+    /* Slight visual adjustment for alignment */
 }
 
 sup a {
     text-decoration: none;
-    padding: 0 4px;
+    padding: 0 6px;
+    /* Slightly wider padding for the box */
     border: 1px solid #2d2d2d;
-    font-size: 0.75rem;
+    font-size: 0.9em;
+    /* Almost same size as text */
     color: #2d2d2d;
     display: inline-block;
-    line-height: 1.2;
-    margin-left: 2px;
+    line-height: 1.4;
+    margin-left: 4px;
 }
 
 sup a:hover {
