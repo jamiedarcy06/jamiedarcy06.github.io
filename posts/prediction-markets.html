@@ -39,9 +39,11 @@
             </p>
 
             <p>
-                These markets are fairly competitive, with the spread almost always at once cent, the minimum tick size.
+                These markets are fairly competitive, with the spread almost always at once cent. This isn't very
+                competitive as a percantage of , but is the minimum tick size for prices between 1 and 99 cents.
                 Market Makers have made outsized profits on these markets, with <a
-                    href="https://polymarket.com/@Account88888">Account88888</a> previously known as “JaneStreetIndia”
+                    href="https://polymarket.com/@Account88888">Account88888</a><sup class="fnref"
+                    data-fn="account88888"></sup> previously known as "JaneStreetIndia"
                 making $645k USD in just over a month trading only 15 minute markets, and would stand to make more with
                 the introduction of maker rebates, although they have seemed to have stopped trading.
             </p>
@@ -141,7 +143,7 @@
             <p>
                 But, it’s better than nothing. The orange line is the current price of a yes token on Limitless, and the
                 bold green and red lines are the average price we would get if we were to buy or sell $1 worth of
-                yes<sup><a href="#fn1" id="ref1">1</a></sup>. (If we did not have yes to sell, then we can buy no
+                yes<sup class="fnref" data-fn="slippage"></sup>. (If we did not have yes to sell, then we can buy no
                 tokens).
             </p>
 
@@ -171,15 +173,17 @@
             <p><img src="tape.png" alt="Market Tape" style="max-width: 100%; height: auto; border: 1px solid #ddd;"></p>
 
             <p>
-                Here, delta is a wallets overall exposure to Yes. Wallets with a colour, in this case only 9EC7 are
+                Here, delta is a wallets overall exposure to Yes. Wallets with a colour, in this case only 9EC7, are
                 those that have traded multiple times in this market. There’s a couple interesting things here:
             </p>
 
             <ol>
-                <li>7 orders coming in at 7:57:51 of similar size. These wallets have all done about $200 in volume
-                    total.</li>
-                <li>There exist people buying a contract, which has a maximum value of $1, at a price of $1.02.</li>
-                <li>The people who have bought the contract at what is seemingly an unfavourable price each have over
+                <li>7 orders coming in at 7:57:51 of similar size. These wallets have all done a bit over $200 in volume
+                    total, which is notably the minimum amount to be eligible for an airdrop. </li>
+                <li>There exist people buying a contract, which has a maximum value of $1, at a price of 100.2 cents.
+                </li>
+                <li>The people who have bought the contract after expiry, at what is seemingly an unfavourable price
+                    each have over
                     $100,000 in volume traded!</li>
             </ol>
 
@@ -194,29 +198,57 @@
 
             <p style="text-align: center; margin: 2rem 0;">
                 \( 100(0.997) + 100(0.997)^2 + \dots = \frac{100(0.997)}{1 - 0.997} \approx \$33,233 \)
+
             </p>
 
             <p>
+                worth of volume. Of course, we only have a finite amount of time to trade, and might not be able to
+                commit our desired amount of capital to each market. This isn't a particularly exciting trade, in my
+                opinion.
                 Unfortunately even selling $1 of this contract would result in an average execution price of 99.5 cents.
+                Hence, arbitragers (or, more generally smart-money) are very hesitant to get short at around 95 cents,
+                or long 5
+                cents, especially with a
+                low time to expiry, as there is little chance of ending up flat at resolution.
             </p>
 
             <hr style="margin-top: 3rem; border: 0; border-top: 1px solid #ddd;">
 
-            <div class="footnotes">
-                <p id="fn1">
-                    1. You might notice that the orange line lags the green and red lines. We query the slippage from
-                    the blockchain, whereas we get the actual price provided by Limitless. They are both somewhat
-                    delayed – you can see the up and down arrows representing a trade with long (buy yes, sell no) or
-                    short (sell yes, buy no) intentions. These are only provided a few seconds after the fact,
-                    unfortunately. <a href="#ref1">↩</a>
-                </p>
+            <div class="footnotes" id="footnotes-container">
+                <p data-fn="account88888">I would really, really love to know who is behind this account!</p>
+                <p data-fn="slippage">You might notice that the orange line lags the green and red lines. We query the
+                    slippage from the blockchain, whereas we get the actual price provided by Limitless. They are both
+                    somewhat delayed – you can see the up and down arrows representing a trade with long (buy yes, sell
+                    no) or short (sell yes, buy no) intentions. These are only provided a few seconds after the fact,
+                    unfortunately.</p>
             </div>
-        </article>
 
+            <script>
+                // Auto-number footnotes in order of appearance
+                (function () {
+                    const refs = document.querySelectorAll('sup.fnref');
+                    const container = document.getElementById('footnotes-container');
+                    const footnotes = {};
+                    container.querySelectorAll('p[data-fn]').forEach(p => {
+                        footnotes[p.dataset.fn] = p.textContent;
+                    });
+                    container.innerHTML = '';
 
-    </div>
+                    refs.forEach((ref, i) => {
+                        const num = i + 1;
+                        const fnId = ref.dataset.fn;
+                        const refId = 'ref' + num;
+                        const fnAnchor = 'fn' + num;
 
+                        ref.innerHTML = `<a href="#${fnAnchor}" id="${refId}">${num}</a>`;
 
+                        const p = document.createElement('p');
+                        p.id = fnAnchor;
+                        p.innerHTML = `${num}. ${footnotes[fnId]} <a href="#${refId}">↩</a>`;
+                        container.appendChild(p);
+                    });
+                })();
+            </script>
 </body>
 
 </html>
