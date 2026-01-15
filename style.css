@@ -124,3 +124,18 @@ sup a:hover {
     background-color: #2d2d2d;
     color: #fcfbf9;
 }
+
+/* MathJax Overrides */
+mjx-container,
+.mjx-chtml,
+.mjx-math {
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 1.1em !important;
+}
+
+.mjx-n,
+.mjx-mi,
+.mjx-mo,
+.mjx-mn {
+    font-family: 'Courier New', Courier, monospace !important;
+}
