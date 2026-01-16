@@ -15,7 +15,7 @@ These markets are fairly competitive, with the spread almost always at one cent.
 
 Unfortunately, neither Polymarket or Kalshi lets Australians trade. The next best option is the much less popular Limitless. For context, Polymarket's notional volume for the week beginning the 5th of January was $1.6bn, about 178 times greater than Limitless' $9mn.
 
-## Onto Limitless
+## The Only Game in Town
 
 The shortest binary options traded on Limitless are hourly markets. While they have the same expiries as Polymarket, they source data differently. Polymarket gets its data from Binance, whereas Limitless gets its data from Pyth, which aggregates prices from a range of sources. The difference between Binance and Pyth prices tends to be constant, and is often mean reverting, and so can mostly, but not always be ignored. The mean reversion comes from the fact that Pyth is just a bit slower at reporting prices – if Binance ticks up, it will take a few hundred milliseconds for Pyth to receive this data, and then factor it in.
 
@@ -37,7 +37,7 @@ Even trading a pithy $5 has resulted in 4.6% slippage. The disadvantage of tradi
 
 An interesting decision made by Limitless is that some accounts have a minimum trade size on these markets. If you use a custodial account, in which Limitless manages your wallet (and pays gas fees), they impose a $3 minimum buy.
 
-## A nice trade
+## The Setup
 
 Anyway, here's an example of a good trade setup:
 
@@ -53,7 +53,7 @@ But, it's better than nothing. Also, it's just easier than constantly looking at
 
 The faint green and red lines are the average price if we were to buy or sell $3. You might notice that the marginal slippage is much higher from selling than buying. The opposite would be true if we were trading at, say, 16 cents. Also, dumb-money on Limitless is surprisingly risk-averse – overwhelming buying the most likely outcome, in this case yes.
 
-## On Limitless market participants
+## To Fade or not to fade
 
 This is a little annoying for us – as we will likely be net short when Yes is by far the most likely outcome. Of course, we will receive a rich payout if it resolves No, but we may go for many hours making losses. There are some more considerations to be made:
 
@@ -78,7 +78,7 @@ $$
 
 worth of volume. Of course, we only have a finite amount of time to trade, and might not be able to commit our desired amount of capital to each market. This isn't a particularly exciting trade, in my opinion. Unfortunately even selling $1 of this contract would result in an average execution price of 99.5 cents. Hence, arbitragers (or, more generally smart-money) are very hesitant to get short at around 95 cents, or long at 5 cents, especially with a low time to expiry, as there is little chance of ending up flat at resolution.
 
-## Back to the trade
+
 
 ---
 
