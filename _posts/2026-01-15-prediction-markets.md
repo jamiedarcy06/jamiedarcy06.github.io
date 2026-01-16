@@ -3,14 +3,15 @@ layout: post
 title: "On Trading Cash-or-Nothing Options on Prediction Markets"
 math: true
 ---
+## An quick primer on prediction markets
 
 Prediction markets, such as Polymarket and Kalshi, have received [a lot](https://www.bloomberg.com/opinion/newsletters/2025-11-19/fine-trade-labubu-futures) of attention recently. One interesting product that is traded on Polymarket binary option on Bitcoin, in which you can bet if it will go up or down in some time period:
 
 ![15 minute option orderbook](/assets/images/15min-orderbook.png)
 
-Above is the shortest, and most popular 15 minute option. There seems to be a bug in the volume counter shown at the top of the orderbook – volume always goes back to $1.0k when the page is refreshed, and then ticks up. The bitcoin market easily generates over $100k of volume in a 15 minute market.
+Above is the shortest, and most popular 15 minute option. There seems to be a bug in the volume counter shown at the top of the orderbook – volume always goes back to $1.0k when the page is refreshed, and then ticks up. The bitcoin market easily generates over $100k of volume in a 15 minute market. In case you don't know how these markets work, you can buy a share of "Yes", in this case for 92 cents which will resolve for $1 if Bitcoin finishes above \$96420.35, and $0 otherwise. Your counterparty has bought a "No" share for 8 cents. 
 
-These markets are fairly competitive, with the spread almost always at once cent. This isn't very competitive as a percantage, but is the minimum tick size for prices between 1 and 99 cents. Market Makers have made outsized profits on these markets, with [Account88888](https://polymarket.com/@Account88888)[^account] previously known as "JaneStreetIndia" making $645k USD in just over a month trading only 15 minute markets, and would stand to make more with the introduction of maker rebates, although they have seemed to have stopped trading.
+These markets are fairly competitive, with the spread almost always at once cent. This isn't very competitive as a percantage, but it's the minimum tick size for prices between 1 and 99 cents. Market Makers have made outsized profits on these markets, with [Account88888](https://polymarket.com/@Account88888)[^account] previously known as "JaneStreetIndia" making $645k USD in just over a month trading only 15 minute markets, and would stand to make more with the introduction of maker rebates, although they have seemed to have stopped trading.
 
 Unfortunately, neither Polymarket or Kalshi lets Australians trade. The next best option is the much less popular Limitless. For context, Polymarket's notional volume for the week beginning the 5th of January was $1.6bn, about 178 times greater than Limitless' $9mn.
 
@@ -18,7 +19,7 @@ The shortest binary options traded on Limitless are hourly markets. While they h
 
 The main difference is the mechanism in which these products are traded. All markets on Polymarket (that is, BTC, ETH, SOL, XRP) are traded through a central limit order book (CLOB).
 
-Only Bitcoin and Solana are offered through a CLOB on Limitless. There only seems to be one market maker. Their strategy is fairly rudimentary – they set their midpoint to be that of Polymarket's, and quote 3 cents wide on each side, for a spread of 6 cents. Interesting, a spread of 6 cents is the maximum allowed to quality for rewards from the exchange. In the past they used to always quote 100 contracts of volume on each side. This isn't the case anymore – perhaps they wish to obfuscate their strategy, or someone is queueing up behind the original MM to farm rewards, knowing their quotes are very unlikely to get filled.
+Only Bitcoin and Solana are offered through a CLOB on Limitless. There only seems to be one market maker[^onemm]. Their strategy is fairly rudimentary – they set their midpoint to be that of Polymarket's, and quote 3 cents wide on each side, for a spread of 6 cents. Interesting, a spread of 6 cents is the maximum allowed to quality for rewards from the exchange. In the past they used to always quote 100 contracts of volume on each side. This isn't the case anymore – perhaps they wish to obfuscate their strategy, or someone is queueing up behind the original MM to farm rewards, knowing their quotes are very unlikely to get filled.
 
 While this seems an attractive market to make, the infrastructure offered by Limitless is quite poor. It takes seconds to confirm if one of our orders has been executed, and it is not possible to send a maker only order. If we happen to be a taker, then we risk being slugged with a fee up to 3%. While the fee curve can be approximated, the exact equation isn't available in documentation, nor upon request, but perhaps can be derived from on-chain data.
 
@@ -30,9 +31,9 @@ As x*y = 2500, and we know that y is 50 + 5 = 55, x must be about 45.45. So, we 
 
 Even trading a pithy $5 has resulted in 4.6% slippage. The disadvantage of trading this is obvious – we will need a considerable amount of edge to perform a trade of reasonable size. However, any time someone trades with reasonable size, we should get an opportunity to knock the price back to its fair value.
 
-An interesting decision made by Limitless is that some accounts have a minimum trade size on these markets. If you use a custodial account, in which Limitless manages your wallet (and pays gas fees), they impose a $3 minimum buy.
+An interesting decision made by Limitless is that some accounts have a minimum trade size on these markets. If you use a custodial account [^custodial], in which Limitless manages your wallet (and pays gas fees), they impose a $3 minimum buy.
 
-Anyway, here's an example of a good trade (that I did not make):
+Anyway, here's an example of a good trade setup:
 
 ![Example of a good trade graph](/assets/images/good-trade-graph.png)
 
@@ -63,14 +64,20 @@ Here, delta is a wallets overall exposure to Yes. Wallets with a colour, in this
 
 I'm not sure if this is somehow a profitable trade (I doubt it?), or these traders are farming volume, with the goal of receiving an [airdrop](https://x.com/trylimitless/status/2010773556192239652). One can generate a lot of volume with just $100. Trading in the few seconds after this market is resolved means that it is impossible to lose, and so we only pay fees. Assuming that we pay 10 bps of fees, and a 20bps 'premium' (that is, we pay 100.2 cents for a contract worth 100, as well as 0.1 cents in fees), we can generate:
 
-$$100(0.997) + 100(0.997)^2 + \dots = \frac{100(0.997)}{1 - 0.997} \approx \$33,233$$
+$$
+100(0.997) + 100(0.997)^2 + \dots = \frac{100(0.997)}{1 - 0.997} \approx \$33,233
+$$
 
 worth of volume. Of course, we only have a finite amount of time to trade, and might not be able to commit our desired amount of capital to each market. This isn't a particularly exciting trade, in my opinion. Unfortunately even selling $1 of this contract would result in an average execution price of 99.5 cents. Hence, arbitragers (or, more generally smart-money) are very hesitant to get short at around 95 cents, or long at 5 cents, especially with a low time to expiry, as there is little chance of ending up flat at resolution.
 
 ---
 
 [^account]: I would really, really love to know who is behind this account!
-
+    
 [^slippage]: You might notice that the orange line lags the green and red lines. We query the slippage from the blockchain, whereas we get the actual price provided by Limitless. They are both somewhat delayed – you can see the up and down arrows representing a trade with long (buy yes, sell no) or short (sell yes, buy no) intentions. These are only provided a few seconds after the fact, unfortunately.
-
+    
 [^fairprice]: It's worth noting that I don't actually a model of my own to work out a fair price. I have tried modelling this - I think Polymarket is a little bit more accurate than I am, especially at tail probabilities. Also, the price on Limitless does seem to mean revert to Polymarket's, as the ROI of building one's own model is very low.
+
+[^onemm]: I am farily confident there is only one, as sometimes they cancel their quotes, and take about a second to post new ones (there is no amend order), while the spread blows up to about 20 cents. 
+
+[^custodial]: More specifically, you have signed in with Google, Twitter, or Discord, instead of a Crypto wallet. You then have to use Limtless to deposit and withdraw, rather than approving Limitless transactions with your wallet. I suspect that people who entrust Limitless with their capital are not particularly price sensitive. 
