@@ -37,6 +37,8 @@ Even trading a paltry $5 has resulted in 4.6% slippage. The disadvantage of trad
 
 An interesting decision made by Limitless is that some accounts have a minimum trade size on these markets. If you use a custodial account[^custodial], in which Limitless manages your wallet (and pays gas fees), they impose a $3 minimum buy.
 
+Although we trade buy buying yes and no tokens (and selling them if we have all our capital tied up), I'll quote everything hereafter in terms of yes quotes for simplicity. So, instead of 'shorting yes', we are really buying no. 
+
 ## The Setup
 
 Here's an example of a few interesting trades:
@@ -90,7 +92,11 @@ These types of opportunities tend to present themselves quite a lot. This is a t
 
 ![Edge Graph](/assets/images/edge.png)
 
-Perhaps I'll get around to fully automating my trades soon. I've only placed a few trades so far, and trading by hand mostly does the job. 
+Currently, I enter positions by hand, but these positions are automatically hedged whenever there is more than a cent's worth of edge in hedging. This approach has been pretty successful so far, as shown in the below equity curve:
+
+![Equity Curve](/assets/images/equity_curve.png)
+
+Here, we see that I've traded 12 markets, with about half of these being used for tests, which actually had under a cent of volume traded.
 
 ---
 
