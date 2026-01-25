@@ -48,7 +48,7 @@ Here's an example of a few interesting trades:
 There's a bit going on here. First, the blue line. This is the midpoint on the corresponding Polymarket market. The yellow line is my attempt at normalizing the Polymarket midpoint[^fairprice]. We back out the implied volatility under Black-Scholes from Polymarket, and plug it to Limitless. This isn't optimal for a couple of reasons:
 
 1. BS isn't great at pricing these markets.
-2. Volatility isn't constant across strike space, and
+2. Volatility isn't constant across strikes, and
 3. As mentioned above, the distance between Pyth and Binance often reverts – you can see this when the yellow line went up to 93 cents, and then crashed back down.
 
 But, it's better than nothing. Also, it's just easier than constantly looking at another graph of the underlying's prices and trying to eyeball the magnitude of a move. The orange line is the current price of a yes token on Limitless, and the bold green and red lines are the average price we would get if we were to buy or sell $1 worth of yes[^slippage]. (If we did not have yes to sell, then we can buy no tokens).
