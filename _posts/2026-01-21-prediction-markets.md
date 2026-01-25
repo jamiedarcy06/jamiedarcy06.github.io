@@ -45,7 +45,7 @@ Here's an example of a few interesting trades:
 
 ![Example of a good trade graph](/assets/images/good-trade-graph.png)
 
-There's a bit going on here. First, the blue line. This is the midpoint on the corresponding Polymarket market. The yellow line is my attempt at normalizing the Polymarket midpoint[^fairprice]. We back out the implied volatility under Black-Scholes from Polymarket, and plug it to Limitless. This isn't great for a couple of reasons:
+There's a bit going on here. First, the blue line. This is the midpoint on the corresponding Polymarket market. The yellow line is my attempt at normalizing the Polymarket midpoint[^fairprice]. We back out the implied volatility under Black-Scholes from Polymarket, and plug it to Limitless. This isn't optimal for a couple of reasons:
 
 1. BS isn't great at pricing these markets.
 2. Volatility isn't constant across strike space, and
@@ -92,7 +92,7 @@ These types of opportunities tend to present themselves quite a lot. This is a t
 
 ![Edge Graph](/assets/images/edge.png)
 
-Currently, I enter positions by hand, but these positions are automatically hedged whenever there is more than a cent's worth of edge in hedging. This approach has been pretty successful so far, as shown in the below equity curve:
+Currently, I enter positions by click trading, but these positions are automatically hedged whenever there is more than a cents worth of edge in hedging. This approach has been pretty successful so far (but can certainly be optimized), as shown in the below equity curve:
 
 ![Equity Curve](/assets/images/equity_curve.png)
 
