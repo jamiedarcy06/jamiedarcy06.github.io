@@ -96,8 +96,6 @@ Currently, I enter positions by click trading, but these positions are automatic
 
 ![Equity Curve](/assets/images/equity_curve.png)
 
-Here, we see that I've traded 12 markets, with about half of these being used for tests, which actually had under a cent of volume traded.
-
 ---
 
 [^account]: I would really, really love to know who is behind this account!
