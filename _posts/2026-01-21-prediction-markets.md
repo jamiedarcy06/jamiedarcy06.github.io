@@ -92,9 +92,11 @@ These types of opportunities tend to present themselves quite a lot. This is a t
 
 ![Edge Graph](/assets/images/edge.png)
 
-Currently, I enter positions by click trading, but these positions are automatically hedged whenever there is more than a cents worth of edge in hedging. This approach has been pretty successful so far (but can certainly be optimized), as shown in the below equity curve:
+Currently, I enter automatically enter positions when there's more than 3 cents of edge, and these positions are automatically hedged whenever there is more than 1 cents of edge. This approach has been pretty successful so far as shown in the below equity curve:
 
 ![Equity Curve](/assets/images/equity_curve.png)
+
+This only tracks my USDC at the end of every market, and so dosen't capture all of the strategie's variance, not that there is much. I could count the number of times I've lost over 10 cents in a trade on one hand.  
 
 ---
 
