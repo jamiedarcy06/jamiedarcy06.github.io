@@ -37,7 +37,7 @@ Even trading a paltry $5 has resulted in 4.6% slippage. The disadvantage of trad
 
 An interesting decision made by Limitless is that some accounts have a minimum trade size on these markets. If you use a custodial account[^custodial], in which Limitless manages your wallet (and pays gas fees), they impose a $3 minimum buy.
 
-Although we trade buy buying yes and no tokens (and selling them if we have all our capital tied up), I'll quote everything hereafter in terms of yes quotes for simplicity. So, instead of 'shorting yes', we are really buying no. 
+Although we trade by buying yes and no tokens (and selling them if we have all our capital tied up), I'll quote everything hereafter in terms of yes quotes for simplicity. So, instead of 'shorting yes', we are really buying no. 
 
 ## The Setup
 
@@ -92,11 +92,11 @@ These types of opportunities tend to present themselves quite a lot. This is a t
 
 ![Edge Graph](/assets/images/edge.png)
 
-Currently, I enter automatically enter positions when there's more than 3 cents of edge, and these positions are automatically hedged whenever there is more than 1 cents of edge. This approach has been pretty successful so far as shown in the below equity curve:
+Currently, I automatically enter positions when there's more than 3 cents of edge, and these positions are automatically hedged whenever there is more than 1 cent of edge. This approach has been pretty successful so far as shown in the below equity curve:
 
 ![Equity Curve](/assets/images/equity_curve.png)
 
-This only tracks my USDC at the end of every market, and so dosen't capture all of the strategie's variance, not that there is much. I could count the number of times I've lost over 10 cents in a trade on one hand.  
+This only tracks my USDC at the end of every market, and so doesn't capture all of the strategy's variance, not that there is much.
 
 ---
 
