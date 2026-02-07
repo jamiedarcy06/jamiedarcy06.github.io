@@ -5,7 +5,7 @@ math: true
 ---
 ## A quick primer on prediction markets
 
-Prediction markets, such as Polymarket and Kalshi, have received [a lot](https://www.bloomberg.com/opinion/newsletters/2025-11-19/fine-trade-labubu-futures) of attention recently. One interesting product that is traded on Polymarket is the binary option on Bitcoin, in which you can bet if it will go up or down in some time period:
+Prediction markets, such as Polymarket and Kalshi, have received [a lot](https://www.bloomberg.com/opinion/newsletters/2025-11-19/fine-trade-labubu-futures) of attention recently. One interesting product that is traded on Polymarket is a binary option on Bitcoin, in which you can bet if it will go up or down in some time period:
 
 ![15 minute option orderbook](/assets/images/15min-orderbook.png)
 
