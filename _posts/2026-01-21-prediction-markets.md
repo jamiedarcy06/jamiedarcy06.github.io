@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Don't use AMMs to price Options"
+title: "Don't use AMMs to price Binary Options"
 math: true
 ---
 ## A quick primer on prediction markets
@@ -101,7 +101,7 @@ updated 13-05-2026: Unfortunately a few days after writing this, Limitless decid
 ---
 [^nolonger]: On Feburary 12th, Polymarket launched 5-minute markets.  
 
-[^fraud]: Limitless has recently witness unbelievable growth: https://www.linkedin.com/posts/cjhweb3_39b-in-total-trading-300-growth-mom-share-7457408215522123776-rh71/. I mean that literally - most of the volume is clearly wash trading. 
+[^fraud]: Limitless has recently witness unbelievable (growth)[https://www.linkedin.com/posts/cjhweb3_39b-in-total-trading-300-growth-mom-share-7457408215522123776-rh71/]. I mean that literally - most of the volume is clearly wash trading. 
 
 [^slippage]: You might notice that the orange line lags the green and red lines. We query the slippage from the blockchain, whereas we get the actual price provided by Limitless. They are both somewhat delayed – you can see the up and down arrows representing a trade with long (buy yes, sell no) or short (sell yes, buy no) intentions. These are only provided a few seconds after the fact, unfortunately.
     
