@@ -45,7 +45,7 @@ Here's an example of a few interesting trades:
 
 ![Example of a good trade graph](/assets/images/good-trade-graph.png)
 
-There's a bit going on here. First, the blue line. This is the midpoint on the corresponding Polymarket market. The yellow line is my attempt at normalizing the Polymarket midpoint[^fairprice]. We back out the implied volatility under Black-Scholes from Polymarket, and plug it to Limitless. This isn't optimal for a couple of reasons:
+There's a bit going on here. First, the blue line. This is the midpoint on the corresponding Polymarket market. The yellow line is my attempt at normalizing the Polymarket midpoint. We back out the implied volatility under Black-Scholes from Polymarket, and plug it to Limitless. This isn't optimal for a couple of reasons:
 
 1. BS isn't great at pricing these markets.
 2. Volatility isn't constant across strikes, and
@@ -96,7 +96,14 @@ Currently, I automatically enter positions when there's more than 3 cents of edg
 
 This only tracks my USDC at the end of every market, and so doesn't capture all of the strategy's variance. 
 
-updated 13-05-2026: Unfortunately a few days after writing this, Limitless decided to shut down these markets. They had been running for months before I started to trade them, so just unlucky timing. I had ran up my account to $70, with an annualised sharpe of ~69. I was definitely starting to get capacity constrained, but could probably have squeezed some more edge out of letting positions run, and not hedging. These days on Limitless I mostly MM and collect rebates. It's certainly a lot less fun, but makes enough to be worth it.  
+updated 13-05-2026: Unfortunately a few days after originally writing this, Limitless decided to shut down these markets. They had been running for months before I started to trade them, so just unlucky timing. I had ran up my account to $70, with an annualised sharpe of ~69. I was definitely starting to get capacity constrained, but could probably have squeezed some more edge out of letting positions run, and not hedging. 
+
+These days on Limitless I mostly MM on CLOB markets. These days the trades are pretty standard (get fair price from exchange with good price discovery, make wider on Limitless), but a few months ago wash traders could be profitably exploited. To inflate volume, Limitless makes a lot of [trades](https://x.com/TheNotoriousSKi/status/2055068095346348132/photo/1) between their own accounts.
+
+They often wash traded on the hourly Bitcoin Up/Down markets. Beyond the ATM strike, Limitless also had a far ITM and OTM strikes, about 1% away from the ATM strike. I'll talk about just the TTM strike from now on, but a symmetric argument applies to the OTM market.  With only an hour to expiry, it was extremely likely that the price would finish ITM. Conservatively, these markets were worth ~99 cents. So, I was quite surpised to see a lot of trades with similar volume occuring at 95.8 cents, often just a few seconds apart. These were all committed by accounts with large volumes (> $1,000,000 USD). 
+
+I was even more surprised to notice that my 96 cent bids would get hit by these same accounts too. This wouldn't always happen, and I'm really not sure about the underlying bug, but this ended up being pretty profitable. One of the accounts, [Cookie](https://limitless.exchange/profile/0x34f2276f21cac9c783698d53bc8983c041f00fd6) was so notoriously for this, that after reporting missing rebates for MMs, I've had people DM me on Discord asking if I was / knew of him.  
+
 
 ---
 [^nolonger]: On Feburary 12th, Polymarket launched 5-minute markets.  
@@ -104,9 +111,7 @@ updated 13-05-2026: Unfortunately a few days after writing this, Limitless decid
 [^fraud]: Limitless has recently witness unbelievable (growth)[https://www.linkedin.com/posts/cjhweb3_39b-in-total-trading-300-growth-mom-share-7457408215522123776-rh71/]. I mean that literally - most of the volume is clearly wash trading. 
 
 [^slippage]: You might notice that the orange line lags the green and red lines. We query the slippage from the blockchain, whereas we get the actual price provided by Limitless. They are both somewhat delayed – you can see the up and down arrows representing a trade with long (buy yes, sell no) or short (sell yes, buy no) intentions. These are only provided a few seconds after the fact, unfortunately.
-    
-[^fairprice]: It's worth noting that I don't actually use a model of my own to work out a fair price. I have tried modelling this - I think Polymarket is a little bit more accurate than I am, especially at tail probabilities. Also, the price on Limitless does seem to mean revert to Polymarket's, so the ROI of building one's own model is very low. (Perhaps the converse is true, as well.)
-    
+        
 [^onemm]: I am fairly confident there is only one, as sometimes they cancel their quotes, and take about a second to post new ones (there is no amend order), while the spread blows up to about 20 cents.
     
 [^custodial]: More specifically, you have signed in with Google, Twitter, or Discord, instead of a Crypto wallet. You then have to use Limitless to deposit and withdraw, rather than approving Limitless transactions with your wallet. I suspect that people who entrust Limitless with their capital are not particularly price sensitive.
