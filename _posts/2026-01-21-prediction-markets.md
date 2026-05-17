@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Don't use AMMs to price Binary Options"
+title: "Don't use AMMs to price Binary Options!"
 math: true
 ---
 ## A quick primer on prediction markets
@@ -103,6 +103,8 @@ These days on Limitless I mostly MM on CLOB markets. These days the trades are p
 They often wash traded on the hourly Bitcoin Up/Down markets. Beyond the ATM strike, Limitless also had a far ITM and OTM strikes, about 1% away from the ATM strike. I'll talk about just the TTM strike from now on, but a symmetric argument applies to the OTM market.  With only an hour to expiry, it was extremely likely that the price would finish ITM. Conservatively, these markets were worth ~99 cents. So, I was quite surpised to see a lot of trades with similar volume occuring at 95.8 cents, often just a few seconds apart. These were all committed by accounts with large volumes (> $1,000,000 USD). 
 
 I was even more surprised to notice that my 96 cent bids would get hit by these same accounts too. This wouldn't always happen, and I'm really not sure about the underlying bug, but this ended up being pretty profitable. One of the accounts, [Cookie](https://limitless.exchange/profile/0x34f2276f21cac9c783698d53bc8983c041f00fd6) was so notoriously for this, that after reporting missing rebates for MMs, I've had people DM me on Discord asking if I was / knew of him.  
+
+
 
 
 ---
