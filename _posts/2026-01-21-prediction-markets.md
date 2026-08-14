@@ -17,7 +17,7 @@ Unfortunately, neither Polymarket nor Kalshi lets Australians trade. The next be
 
 ## More on Limitless
 
-At the time of writing, the shortest binary options traded on Limitless are hourly markets. While they have the same expiries as Polymarket, they source data differently. Polymarket gets its data from Binance, whereas Limitless gets its data from Pyth, which aggregates prices from a range of sources. The difference between Binance and Pyth prices tends to be constant, and is often mean reverting, and so can mostly, but not always be ignored. The mean reversion comes from the fact that Pyth is just a bit slower at reporting prices – if Binance ticks up, it will take a few hundred milliseconds for Pyth to receive this data, and then factor it in.
+At the time of writing, the shortest binary options traded on Limitless are hourly markets. While they have the same expiries as Polymarket, they source data differently. Polymarket gets its data from Binance, whereas Limitless gets its data from Pyth, which aggregates prices from a range of sources. The difference between Binance and Pyth prices tends to be constant, and is often mean reverting, and so can mostly, but not always, be ignored. The mean reversion comes from the fact that Pyth is just a bit slower at reporting prices – if Binance ticks up, it will take a few hundred milliseconds for Pyth to receive this data, and then factor it in.
 
 The main difference is the mechanism in which these products are traded. All markets on Polymarket (that is, BTC, ETH, SOL, XRP) are traded through a central limit order book (CLOB).
 
@@ -62,7 +62,7 @@ This is a little annoying for us – as we will likely be net short when Yes is 
 1. If there is a while to expiry, the expected movement of our theo will be reasonably high, we will be able to do some further trades, and so the distribution of our payoff will not be: "lose most of the time, win really big a little of the time", which may be more convenient. We should be happy to go short.
 2. If we are close to expiry, and the outcome is highly probable, we are almost certain that a large volume of buy orders will come in. Perhaps we may wish to get in front of them. 
 
-I actually think it's worth shorting, even with a low TTE. It is quite inexpensive to get out of a short position (that is, there is not a lot of slippage to go long) when the price is high. If the time to expiry was short here (which, it wasn't), I think the trader represented by the blue down arrow has made the best trade. The trader represented by the pink arrow can be reliably expected (as in, this particular trader is running their strategy in these markets 24/7) to go long or short 10 lots to push price back to its fair value, when it is approximately 4 cents over or undervalued. Interestingly, they seem to transact the same amount of shares, regardless of the price, resulting in quite a high amount of slippage when price is high. They are also not very fast, and you can quite reliably predict when they are going to trade. So, the trader in blue can trade short say, 4 lots, wait for pink to sell 10 lots, and then buy to cover for what is an almost riskless profit. Pink has made a good trade too - they have sold for an average price above that of the fair value, but they must endure some variance as a cost of being slow, and indiscriminate with their sizing.
+I actually think it's worth shorting, even with a low TTE. It is quite inexpensive to get out of a short position (that is, there is not a lot of slippage to go long) when the price is high. If the time to expiry was short here (which, it wasn't), I think the trader represented by the blue down arrow has made the best trade. The trader represented by the pink arrow can be reliably expected (as in, this particular trader is running their strategy in these markets 24/7) to go long or short 10 lots to push price back to its fair value, when it is approximately 4 cents over or undervalued. Interestingly, they seem to transact the same amount of shares, regardless of the price, resulting in quite a high amount of slippage when price is high. They are also not very fast, and you can quite reliably predict when they are going to trade. So, the trader in blue can trade short say, 4 lots, wait for pink to sell 10 lots, and then buy to cover for what is an almost riskless profit. Pink has made a good trade too – they have sold for an average price above that of the fair value, but they must endure some variance as a cost of being slow, and indiscriminate with their sizing.
 
 
 
@@ -86,7 +86,7 @@ worth of volume. This isn't a particularly exciting trade, in my opinion. Unfort
 
 ## Back to the trade
 
-These types of opportunities tend to present themselves quite a lot. This is a two minute window showing edge in a $1 trade:
+These types of opportunities tend to present themselves quite a lot. This is a two-minute window showing edge in a $1 trade:
 
 ![Edge Graph](/assets/images/edge.png)
 
@@ -96,19 +96,19 @@ Currently, I automatically enter positions when there's more than 3 cents of edg
 
 This only tracks my USDC at the end of every market, and so doesn't capture all of the strategy's variance. 
 
-updated 13-05-2026: Unfortunately a few days after originally writing this, Limitless decided to shut down these markets. They had been running for months before I started to trade them, so just unlucky timing. I had ran up my account to $70, with an annualised sharpe of ~69. I was definitely starting to get capacity constrained, but could probably have squeezed some more edge out of letting positions run, and not hedging. 
+updated 13-05-2026: Unfortunately a few days after originally writing this, Limitless decided to shut down these markets. They had been running for months before I started to trade them, so just unlucky timing. I had run up my account to $70, with an annualised sharpe of ~69. I was definitely starting to get capacity constrained, but could probably have squeezed some more edge out of letting positions run, and not hedging. 
 
 These days on Limitless I mostly MM on CLOB markets. The trades are pretty standard (get fair price from exchange with good price discovery, make wider on Limitless), but a few months ago wash traders could be profitably exploited. To inflate volume, Limitless makes a lot of [trades](https://x.com/TheNotoriousSKi/status/2055068095346348132/photo/1) between their own accounts.
 
-They often wash traded on the hourly Bitcoin Up/Down markets. Beyond the ATM strike, Limitless also had a far ITM and OTM strikes, about 1% away from the ATM strike. I'll talk about just the ITM strike from now on, but a symmetric argument applies to the OTM market.  With only an hour to expiry, it was extremely likely that the price would finish ITM. Conservatively, these markets were worth ~99 cents. So, I was quite surpised to see a lot of trades with similar volume occuring at 95.8 cents, often just a few seconds apart. These were all committed by accounts with large volumes (> $1,000,000 USD). 
+They often wash traded on the hourly Bitcoin Up/Down markets. Beyond the ATM strike, Limitless also had far ITM and OTM strikes, about 1% away from the ATM strike. I'll talk about just the ITM strike from now on, but a symmetric argument applies to the OTM market. With only an hour to expiry, it was extremely likely that the price would finish ITM. Conservatively, these markets were worth ~99 cents. So, I was quite surprised to see a lot of trades with similar volume occurring at 95.8 cents, often just a few seconds apart. These were all made by accounts with large volumes (> $1,000,000 USD). 
 
-I was even more surprised to notice that my 96 cent bids would get hit by these same accounts too. This wouldn't always happen, and I'm really not sure about the underlying bug, but this ended up being pretty profitable. One of the accounts, [Cookie](https://limitless.exchange/profile/0x34f2276f21cac9c783698d53bc8983c041f00fd6) was so notoriously for this, that after reporting missing rebates for MMs, I've had people DM me on Discord asking if I was / knew of him.  
+I was even more surprised to notice that my 96 cent bids would get hit by these same accounts too. This wouldn't always happen, and I'm really not sure about the underlying bug, but this ended up being pretty profitable. One of the accounts, [Cookie](https://limitless.exchange/profile/0x34f2276f21cac9c783698d53bc8983c041f00fd6), was so notorious for this that after reporting missing rebates for MMs, I've had people DM me on Discord asking if I was / knew of him.  
 
 
 
 
 ---
-[^nolonger]: On Feburary 12th, Polymarket launched 5-minute markets.  
+[^nolonger]: On February 12th, Polymarket launched 5-minute markets.  
 
 [^fraud]: Limitless has recently witnessed unbelievable [growth](https://www.linkedin.com/posts/cjhweb3_39b-in-total-trading-300-growth-mom-share-7457408215522123776-rh71/). I mean that literally - most of the volume is clearly wash trading. 
 
