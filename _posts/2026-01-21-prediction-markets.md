@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Don't use AMMs to price Binary Options!"
+description: "Why constant product AMMs are a poor way to price short-dated binary options, using Limitless's hourly crypto markets as a case study."
 math: true
 ---
 ## A quick primer on prediction markets

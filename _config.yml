@@ -1,6 +1,11 @@
 title: Jamie D'Arcy
 author: Jamie D'Arcy
 description: Personal blog about prediction markets, trading, and more.
+url: https://jamiedarcy06.github.io
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
 
 # Build settings
 markdown: kramdown
