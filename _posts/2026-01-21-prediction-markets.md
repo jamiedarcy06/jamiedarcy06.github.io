@@ -105,7 +105,7 @@ They often wash traded on the hourly Bitcoin Up/Down markets. Beyond the ATM str
 
 I was even more surprised to notice that my 96 cent bids would get hit by these same accounts too. This wouldn't always happen, and I'm really not sure about the underlying bug, but this ended up being pretty profitable. One of the accounts, [Cookie](https://limitless.exchange/profile/0x34f2276f21cac9c783698d53bc8983c041f00fd6), was so notorious for this that after reporting missing rebates for MMs, I've had people DM me on Discord asking if I was / knew of him.  
 
-updated 23-08-2026: Here's an equity curve so far. Some of it is based off an excel file where I manually entered pnl (this still isn't automated!), and some of it was derived off-chain with the help of claude.
+updated 23-09-2026: Here's an equity curve so far. Some of it is based off an excel file where I manually entered pnl (this still isn't automated!), and some of it was derived on-chain with the help of Claude.
 
 ![Combined Equity Curve](/assets/images/equity_combined.png)
 
