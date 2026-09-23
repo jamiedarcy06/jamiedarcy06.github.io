@@ -109,6 +109,8 @@ updated 23-09-2026: Here's an equity curve so far. Some of it is based off an ex
 
 ![Combined Equity Curve](/assets/images/equity_combined.png)
 
+You can see that declining volumes have resulted in declining profitability, but I have fixed some suboptimal behaviour which resulted in me getting picked off unfavourably.
+
 
 
 
